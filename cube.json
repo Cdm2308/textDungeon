@@ -22,7 +22,7 @@
       },
      {
          "id":"2",
-         "description":"You are in room 2, with a few locked windows and a door each in the south, northeast and west.",
+         "description":"You are in room 2, with a few locked windows and a door each in the south, northeast and west. Clearly this is the hub of innovation.",
          "moves": [
            {
              "n":"0",
