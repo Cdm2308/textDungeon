@@ -2,7 +2,7 @@
    "rooms":[
       {
          "id":"1",
-         "description":"You are in room 1, with a few locked windows and a door each in the south and east.",
+         "description":"You are in room 1, with a few locked windows and a door each in the south and east. This is the first best room",
          "moves": [
            {
              "n":"0",
