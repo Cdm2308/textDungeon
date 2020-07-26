@@ -2,7 +2,7 @@
    "rooms":[
       {
          "id":"1",
-         "description":"You are in room 1, with a few locked windows and a door each in the south and east. This is the first best room",
+         "description":"You are in room 1, with a few locked windows and a door each in the south and east. This is the first best room.",
          "moves": [
            {
              "n":"0",
@@ -36,7 +36,11 @@
            }
          ],
 
-         "items":"",
+         "items":[
+           {
+             "coins": "20"
+           }
+         ],
          "event":"",
          "eventDescription":""
       },
@@ -56,7 +60,11 @@
            }
          ],
 
-         "items":"",
+         "items":[
+           {
+             "wand": "fire"
+           }
+         ],
          "event":"",
          "eventDescription":""
       },
@@ -96,7 +104,11 @@
            }
          ],
 
-         "items":"",
+         "items":[
+           {
+             "sword": "iron"
+           }
+         ],
          "event":"",
          "eventDescription":""
       }
