@@ -1,0 +1,104 @@
+{
+   "rooms":[
+      {
+         "id":"1",
+         "description":"This is room one. It's the first best room.",
+         "moves":
+           {
+             "n": "0",
+             "ne": "0",
+             "e": "2",
+             "se": "0",
+             "s": "3",
+             "sw": "0",
+             "w": "0",
+             "nw": "0"
+           },
+         "items":"",
+         "event":"",
+         "eventDescription":""
+      },
+     {
+         "id":"2",
+         "description":"This is room two. This is the second best room.",
+         "moves":
+           {
+             "n": "0",
+             "ne": "5",
+             "e": "0",
+             "se": "0",
+             "s": "4",
+             "sw": "0",
+             "w": "1",
+             "nw": "0"
+           },
+         "items":
+           {
+             "coins" : "20",
+             "sword" : "steel"
+           },
+         "event":"",
+         "eventDescription":""
+      },
+     {
+         "id":"3",
+         "description":"This is room three.",
+         "moves":
+           {
+             "n": "1",
+             "ne": "0",
+             "e": "4",
+             "se": "0",
+             "s": "0",
+             "sw": "0",
+             "w": "0",
+             "nw": "0"
+           },
+         "items":
+           {
+             "wand" : "fire"
+           },
+         "event":"",
+         "eventDescription":""
+      },
+     {
+         "id":"4",
+         "description":"This is room four.",
+         "moves":
+           {
+             "n": "2",
+             "ne": "0",
+             "e": "0",
+             "se": "0",
+             "s": "0",
+             "sw": "0",
+             "w": "3",
+             "nw": "0"
+           },
+         "items":"",
+         "event":"",
+         "eventDescription":""
+      },
+     {
+         "id":"5",
+         "description":"This is room five.",
+         "moves":
+           {
+             "n": "0",
+             "ne": "0",
+             "e": "0",
+             "se": "0",
+             "s": "0",
+             "sw": "2",
+             "w": "0",
+             "nw": "0"
+           },
+         "items":
+           {
+             "sword" : "iron"
+           },
+         "event":"",
+         "eventDescription":""
+      }
+   ]
+}
