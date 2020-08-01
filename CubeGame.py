@@ -1,52 +1,76 @@
 import json
 
-# global variables
-itemCatalog = ["coins", "sword", "wand"]
-playerInventory = {}
 
-# Function to validate move choices
-# Returns true if a valid move choice
-def validMove(moveChoice):
-    validMoves = ["n", "ne", "e", "se", "s", "sw", "w", "nw"]
+# ************************
+# Room class
+# ************************
+class Room:
 
-    if moveChoice in validMoves:
+    # Constructor
+    def __init__(self, room):
+        # print(room)
+        self.roomNumber = room.get("id")
+        self.description = room.get("description")
+        self.movesDict = room.get("moves")
+        self.itemsDict = room.get("items")
+
+    # Describe room
+    def describe_room(self):
+        print("Room number :", self.roomNumber)
+        print("Description :", self.description)
         print()
-        return True
-    elif moveChoice == "exit":
-        exitGameMessage()
-    else:
-        print("You tried to move in your chosen direction and bumped into the wall. Try again.")
-        print()
+        print("Items :", self.itemsDict)
 
-    return False
+    # If the item matches what the player asked for
+    # return that, and pop it from the itemsDict
+    # so the room won't have it anymore
+    def get_item(self, itemName):
+
+        item = {}
+
+        if itemName in self.itemsDict:
+            item[itemName] = self.itemsDict[itemName]
+            print("I found ", itemName)
+            self.itemsDict.pop(itemName)
+
+        return item
+
+    # Given a room choice, return the next room number
+    # TODO refactor this, unneccesary duplicate valid move check
+    def get_next_room(self, moveChoice):
+
+        nextRoomNumber = "0"
+        validMoves = ["n", "ne", "e", "se", "s", "sw", "w", "nw"]
+
+        if moveChoice in validMoves:
+            nextRoomNumber = self.movesDict[moveChoice]
+            print("Yay, new room is :", nextRoomNumber)
+
+        return nextRoomNumber
 
 
-# Given a move choice, return the next room to move to
-def getNextRoom(moveList, moveChoice):
-    for moveDict in moveList:
-        return moveDict[moveChoice]
+# ************************
+# Player class
+# ************************
+class Player:
 
+    # Constructor
+    def __init__(self):
+        self.inventory = []
 
-def describeRoom(room_data, currentRoomIndex):
-    print(room_data["rooms"][currentRoomIndex]["description"])
-    roomItemList = room_data["rooms"][currentRoomIndex]["items"]
-    if len(roomItemList) > 0:
-        for itemDict in roomItemList:
-            for itemCatalogOption in itemCatalog:
-                if itemCatalogOption in itemDict:
-                    print("This room contains: ", itemCatalogOption, " with this value: ", itemDict[itemCatalogOption])
-                    playerInventory[itemCatalogOption] = itemDict[itemCatalogOption]
-    else:
-        print("This room looks pretty empty...")
+    # Add an item to the players inventory
+    def add_item(self, item):
+        self.inventory.append(item)
 
+    # Remove an item from the players inventory
+    def drop_item(self, item):
+        self.inventory.remove(item)
 
-# Print player inventory
-def printInventory():
-    if len(playerInventory) > 0:
-        for item in playerInventory:
-            print("Player has an item! It is: ", item, " with this attribute: ", playerInventory[item])
-    else:
-        print("Poor player, you have no inventory...")
+    # Print players inventory
+    def print_inventory(self):
+        print("Your inventory is filled with:")
+        for item in self.inventory:
+            print(item)
 
 
 # Print a kick butt intro, lol
@@ -54,9 +78,14 @@ def printIntro():
     print("Welcome to the mini dungeon, type exit to quit...")
 
 
-def badMoveMessage():
-    print("You can't go that way... Sorry!")
+# Print command options
+def printHelp():
     print()
+    print("You can enter a direction to move, like : n, ne, e, se, s, sw, w, nw")
+    print("-- or --")
+    print("You can enter a command such as 'get sword'")
+    print()
+
 
 
 # Print exit game message
@@ -69,34 +98,67 @@ def exitGameMessage():
 # Main Function
 def main():
 
-    # defining some game variables
+    # define some game variables
+    rooms = []
+    player = Player()
     currentRoom = "1"
-    validMoves = ["n", "ne", "e", "se", "s", "sw", "w", "nw"]
     currentRoomIndex = int(currentRoom) - 1
     continueGame = ""
+    validMoves = ["n", "ne", "e", "se", "s", "sw", "w", "nw"]
 
     # Open our game json
-    with open('cube.json') as data_file:
+    with open('cube2.json') as data_file:
         room_data = json.load(data_file)
+
+    # Lets build a room object for each room in the json file
+    # and add it to our rooms list.  This will make it easier later.
+    #
+    # For each roomDetails in the list of rooms
+    for roomDetails in room_data["rooms"]:
+        currentRoom = Room(roomDetails)
+        rooms.append(currentRoom)
 
 
     # Game loop
     while continueGame != "exit":
-        describeRoom(room_data, currentRoomIndex)
-        printInventory()
-        moveChoice = input("Enter a cardinal direction to move (n,ne,e,se,s,sw,w,nw -->").lower()
 
-        if validMove(moveChoice):
-            moveList = room_data["rooms"][currentRoomIndex]["moves"]
-            nextRoom = getNextRoom(moveList, moveChoice)
+        room = rooms[currentRoomIndex]
+        print("************************")
+        room.describe_room()
+        player.print_inventory()
+        print("************************")
+        print()
 
-            if nextRoom != "0":
-                currentRoomIndex = int(nextRoom)-1
-            else:
-                badMoveMessage()
+        commandChoice = input("Enter a command (H for help) -->").lower()
+        commandList = commandChoice.split()
 
-        elif moveChoice.lower() == "exit":
+        if commandChoice in validMoves:
+            nextRoomNumber = room.get_next_room(commandChoice)
+            if nextRoomNumber != "0":
+                currentRoomIndex = int(nextRoomNumber) - 1
+                print()
+        elif len(commandList) > 1:
+            commandVerb = commandList[0]
+            commandNoun = commandList[1]
+
+            if commandVerb == "get":
+                newItem = room.get_item(commandNoun)
+                if len(newItem) > 0:
+                    player.add_item(newItem)
+                    player.print_inventory()
+                else:
+                    print(commandNoun, "is not in the room.")
+
+        elif commandChoice.lower() == "exit":
             break
+
+        elif commandChoice.lower() == "h":
+            printHelp()
+        else:
+            print("Sorry, I don't understand -->", commandChoice)
+
+    exitGameMessage()
+
 
 
 if __name__ == "__main__":
