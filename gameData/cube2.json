@@ -30,10 +30,7 @@
         "w": "1",
         "nw": "0"
       },
-      "items": {
-        "coins": "20",
-        "sword": "steel"
-      },
+      "items": "",
       "event": "",
       "eventDescription": ""
     },
@@ -50,9 +47,7 @@
         "w": "0",
         "nw": "0"
       },
-      "items": {
-        "wand": "fire"
-      },
+      "items": "",
       "event": "",
       "eventDescription": ""
     },
@@ -86,9 +81,7 @@
         "w": "0",
         "nw": "0"
       },
-      "items": {
-        "sword": "iron"
-      },
+      "items": "",
       "event": "",
       "eventDescription": ""
     }
@@ -101,6 +94,33 @@
       "monsterHP": 100,
       "attack": "Soul Steal",
       "attackDamage": 25
+    }
+  ],
+  "items": [
+    {
+      "name": "Iron Sword",
+      "description": "A sturdy, well balanced sword with light rusting. Average sharpness.",
+      "quantity": 1,
+      "attackDamage": 20
+    },
+    {
+      "name": "Steel Sword",
+      "description": "A sturdy, well balanced sword in pristine condition. Considerable sharpness.",
+      "quantity": 1,
+      "attackDamage": 30
+    },
+    {
+      "name": "Coins",
+      "description": "A weighty bag of shiny, golden coins. Just looking at it makes you happy.",
+      "quantity": 20,
+      "attackDamage": 10
+    },
+    {
+      "name": "Fire Wand",
+      "description": "A strange rod made of iron with a ruby at the tip. It radiates warmth and possesses the power of immolation.",
+      "material": "iron",
+      "quantity": 1,
+      "attackDamage": 50
     }
   ]
 }
