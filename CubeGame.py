@@ -1,7 +1,35 @@
 import json
+import random
 from classData.room import Room
 from classData.player import Player
 from classData.monster import Monster
+from classData.item import Item
+
+roomsList = []
+monstersList = []
+itemsList = []
+
+# Game initialization
+def game_init():
+
+    print()
+    printIntro()
+    roomCount = len(roomsList)
+
+    # First places items in any room
+    for item in itemsList:
+        randomRoom = random.randint(0, roomCount-1)
+        currentRoom = roomsList[randomRoom]
+        currentRoom.itemsList.append(item)
+        roomsList[randomRoom] = currentRoom
+
+    # Now places monsters in any room except the start
+    for monster in monstersList:
+        randomRoom = random.randint(1, roomCount-1)
+        currentRoom = roomsList[randomRoom]
+        if currentRoom.monster is None:
+            currentRoom.monster = monster
+            roomsList[randomRoom] = currentRoom
 
 
 # Print a kick butt intro, lol
@@ -30,8 +58,7 @@ def exitGameMessage():
 def main():
 
     # define some game variables
-    roomsList = []
-    monstersList = []
+
     player = Player()
     currentRoom = "1"
     currentRoomIndex = int(currentRoom) - 1
@@ -58,6 +85,16 @@ def main():
         currentMonster = Monster(monsterDetails)
         monstersList.append(currentMonster)
 
+    # Lets build an item object for each item in the json file
+    # and add it to our item list.  This will make it easier later.
+    #
+    # For each itemDetails in the list of items:
+    for itemDetails in game_data["items"]:
+        currentItem = Item(itemDetails)
+        itemsList.append(currentItem)
+
+    game_init()
+
     # Game loop
     while continueGame != "exit":
 
@@ -65,12 +102,11 @@ def main():
         print("************************")
         print()
         room.describe_room()
-        for monster in monstersList:
-            if monster.startRoom == room.roomNumber:
-                print("There is a monster in the room! Enough talk, have at you!")
-                print()
-                monster.describe_monster()
-                print()
+        if room.monster != None:
+            print("There is a monster in the room! Enough talk, have at you!")
+            print()
+            room.monster.describe_monster()
+            print()
         print()
         print("************************")
         print()

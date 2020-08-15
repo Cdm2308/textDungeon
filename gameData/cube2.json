@@ -14,6 +14,7 @@
         "nw": "0"
       },
       "items": "",
+      "monster": "",
       "event": "",
       "eventDescription": ""
     },
@@ -31,6 +32,7 @@
         "nw": "0"
       },
       "items": "",
+      "monster": "",
       "event": "",
       "eventDescription": ""
     },
@@ -48,6 +50,7 @@
         "nw": "0"
       },
       "items": "",
+      "monster": "",
       "event": "",
       "eventDescription": ""
     },
@@ -65,6 +68,7 @@
         "nw": "0"
       },
       "items": "",
+      "monster": "",
       "event": "",
       "eventDescription": ""
     },
@@ -82,6 +86,7 @@
         "nw": "0"
       },
       "items": "",
+      "monster": "",
       "event": "",
       "eventDescription": ""
     }
@@ -90,10 +95,16 @@
     {
       "name": "Gogolithic Mass",
       "description": "This small, dark animal is an ancient, primordial evil that has risen from the abyss of twenty seven centuries. The bane of cleanliness, this beast is a force to be reckoned with.",
-      "startRoom": "4",
       "monsterHP": 100,
       "attack": "Soul Steal",
       "attackDamage": 25
+    },
+    {
+      "name": "The Nameless One",
+      "description": "This omniscient entity will never give you up, never let you down, and never run around and desert you. \n In addition, it will never make you cry, never say goodbye, and never tell a lie or hurt you.",
+      "monsterHP": 150,
+      "attack": "Brain Plague",
+      "attackDamage": 40
     }
   ],
   "items": [

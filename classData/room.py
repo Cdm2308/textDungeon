@@ -11,31 +11,38 @@ class Room:
         self.roomNumber = room.get("id")
         self.description = room.get("description")
         self.movesDict = room.get("moves")
-        self.itemsDict = room.get("items")
+        self.itemsList = []
+        self.monster = None
 
 
     # Describe room
     def describe_room(self):
         print("Description :", self.description)
         print()
-        if len(self.itemsDict)>0:
+        if len(self.itemsList)>0:
             print("You see the following items:")
-            for key, value in self.itemsDict.items():
-                print(value, key)
+            for item in self.itemsList:
+                print(item.name)
 
     # If the item matches what the player asked for
     # return that, and pop it from the itemsDict
     # so the room won't have it anymore
     def get_item(self, itemName):
 
-        item = {}
+        returnItem = None
 
-        if itemName in self.itemsDict:
-            item[itemName] = self.itemsDict[itemName]
+        if itemName in self.itemsList:
             print("I found ", itemName)
-            self.itemsDict.pop(itemName)
+            returnItem = self.itemsList.pop(itemName)
 
-        return item
+        return returnItem
+
+    # Places an item in the room
+    def place_item(self, item):
+        self.itemsList.append(item)
+
+    def place_monster(self, monster):
+        self.monster = monster
 
     # Given a room choice, return the next room number
     # TODO refactor this, unneccesary duplicate valid move check

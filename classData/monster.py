@@ -9,7 +9,6 @@ class Monster:
     def __init__(self, monster):
         self.name = monster.get("name")
         self.description = monster.get("description")
-        self.startRoom = monster.get("startRoom")
         self.monsterHP = monster.get("monsterHP")
         self.attack = monster.get("attack")
         self.attackDamage = monster.get("attackDamage")
