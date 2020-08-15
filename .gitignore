@@ -1,2 +1,4 @@
 # exclude ide
 .idea
+.DS_Store
+__pycache__/
