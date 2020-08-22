@@ -20,7 +20,7 @@ def game_init():
     for item in itemsList:
         randomRoom = random.randint(0, roomCount-1)
         currentRoom = roomsList[randomRoom]
-        currentRoom.itemsList.append(item)
+        currentRoom.place_item(item)
         roomsList[randomRoom] = currentRoom
 
     # Now places monsters in any room except the start
@@ -28,7 +28,7 @@ def game_init():
         randomRoom = random.randint(1, roomCount-1)
         currentRoom = roomsList[randomRoom]
         if currentRoom.monster is None:
-            currentRoom.monster = monster
+            currentRoom.place_monster(monster)
             roomsList[randomRoom] = currentRoom
 
 
@@ -123,15 +123,24 @@ def main():
                 room.badMoveMessage()
         elif len(commandList) > 1:
             commandVerb = commandList[0]
-            commandNoun = commandList[1]
+            targetItem = ""
+
+            # If we have 2 words in the command, it assumes one is a noun and the other is a verb.
+            if len(commandList) == 2:
+                targetItem = commandList[1]
+
+            if len(commandList) == 3:
+                targetItem = commandList[1] + " " + commandList[2]
 
             if commandVerb == "get":
-                newItem = room.get_item(commandNoun)
-                if len(newItem) > 0:
+                newItem = room.get_item(targetItem)
+                if newItem is not None:
                     player.add_item(newItem)
                     player.print_inventory()
                 else:
-                    print(commandNoun, "is not in the room.")
+                    print(targetItem, "is not in the room.")
+            elif commandVerb == "equip":
+                player.equip_weapon(targetItem)
 
         elif commandChoice.lower() == "h":
             printHelp()

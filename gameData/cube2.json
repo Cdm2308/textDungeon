@@ -94,7 +94,7 @@
   "monsters": [
     {
       "name": "Gogolithic Mass",
-      "description": "This small, dark animal is an ancient, primordial evil that has risen from the abyss of twenty seven centuries. The bane of cleanliness, this beast is a force to be reckoned with.",
+      "description": "This small, dark animal is an ancient, primordial evil that has risen from the abyss of twenty seven centuries. \n The bane of cleanliness, this beast is a force to be reckoned with.",
       "monsterHP": 100,
       "attack": "Soul Steal",
       "attackDamage": 25
