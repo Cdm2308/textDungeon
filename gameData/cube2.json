@@ -124,7 +124,7 @@
       "name": "Coins",
       "description": "A weighty bag of shiny, golden coins. Just looking at it makes you happy.",
       "quantity": 20,
-      "attackDamage": 10
+      "attackDamage": 15
     },
     {
       "name": "Fire Wand",

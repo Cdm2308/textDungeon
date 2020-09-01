@@ -31,6 +31,61 @@ def game_init():
             currentRoom.place_monster(monster)
             roomsList[randomRoom] = currentRoom
 
+def fightCheck(player):
+    fight = False
+    fightChoice = input("Will you purge this abomination? (y or n)").lower()
+
+    while (fightChoice != "y") or (fightChoice != "n"):
+
+        if fightChoice == "y":
+            fight = True
+            break
+        elif fightChoice == "n":
+            savingRoll = random.randint(1,10)
+            if savingRoll <7:
+                fight = True
+            else:
+                newPlayerHP = (player.hp) - (player.hp * 0.1)
+                player.hp = int(newPlayerHP)
+                break
+        else:
+            print("I don't understand that choice, do y or n.")
+            print()
+    return fight
+
+
+def combat(player, monster):
+    print()
+    print("What is a player? A miserable little pile of hit points! But enough talk, have at you!")
+    while player.hp>0 and monster.HP>0:
+        print()
+        print("Test your might...")
+        print()
+
+        print("Your health is:", player.hp)
+        print("The monster's health is:", monster.HP)
+        print()
+
+        playerAttackPoints = 10
+
+        if player.weapon is None:
+            print("You try to attack the monster unarmed!")
+            monster.HP = monster.HP - playerAttackPoints
+        else:
+            playerAttackPoints = player.weapon.attackDamage
+            print("You attack the monster with your", player.weapon)
+            monster.HP = monster.HP - playerAttackPoints
+
+
+
+
+    if player.hp>0:
+        print("You have emerged from the combat victorious...")
+    else:
+        print("You have been slain... Game Over.")
+        exit()
+
+
 
 # Print a kick butt intro, lol
 def printIntro():
@@ -102,11 +157,20 @@ def main():
         print("************************")
         print()
         room.describe_room()
-        if room.monster != None:
-            print("There is a monster in the room! Enough talk, have at you!")
+        if room.monster == None:
+            print("There are no monsters here. A brief respite may be had.")
+            print()
+        else:
+            print("There is a monster in the room!")
             print()
             room.monster.describe_monster()
             print()
+            if fightCheck(player)==True:
+                combat(player,room.monster)
+            elif player.hp>0:
+                print("You have evaded the monster for now, but in the process have suffered an injury. You now have", player.hp, "health.")
+                print("If you do not flee immediately, you will encounter it again.")
+                print()
         print()
         print("************************")
         print()
