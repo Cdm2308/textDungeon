@@ -55,6 +55,7 @@ def fightCheck(player):
 
 
 def combat(player, monster):
+    victoryFlag = False
     print()
     print("What is a player? A miserable little pile of hit points! But enough talk, have at you!")
     while player.hp>0 and monster.HP>0:
@@ -66,24 +67,88 @@ def combat(player, monster):
         print("The monster's health is:", monster.HP)
         print()
 
+        input("Press enter to continue!")
+        print()
+
         playerAttackPoints = 10
+        playerAttackChance = random.randint(1,10)
+        monsterAttackChance = random.randint(1,10)
+        monsterAttackPoints = monster.attackDamage
+
 
         if player.weapon is None:
             print("You try to attack the monster unarmed!")
-            monster.HP = monster.HP - playerAttackPoints
         else:
             playerAttackPoints = player.weapon.attackDamage
-            print("You attack the monster with your", player.weapon)
-            monster.HP = monster.HP - playerAttackPoints
+            print("You attack the monster with your", player.weapon.name, "!")
+            print()
+        if playerAttackChance > 4:
+            print("The attack was a success!")
+            print()
+            if playerAttackChance == 10:
+                print("CRITICAL HIT!")
+                print()
+                monster.HP = monster.HP - playerAttackPoints*2
+                if monster.HP<0:
+                    print("The monster's new health is 0")
+                    print()
+                else:
+                    print("The monster's new health is:", monster.HP)
+                    print()
+            else:
+                monster.HP = monster.HP - playerAttackPoints
+                if monster.HP<0:
+                    print("The monster's new health is 0")
+                    print()
+                else:
+                    print("The monster's new health is:", monster.HP)
+                    print()
+        else:
+            print("The attack missed!")
+            print()
 
+        input("Press enter to continue!")
+        print()
+
+        if monster.HP > 0:
+            print("The monster uses", monster.attack, "!")
+            print()
+            if monsterAttackChance > 4:
+                print("The monster's attack was a success!")
+                print()
+                if monsterAttackChance == 10:
+                    print("CRITICAL HIT!")
+                    print()
+                    player.hp = player.hp - monsterAttackPoints * 2
+                    if player.hp < 0:
+                        print("Your new health is 0")
+                        print()
+                    else:
+                        print("Your new health is:", player.hp)
+                        print()
+                else:
+                    player.hp = player.hp - monsterAttackPoints
+                    if player.hp < 0:
+                        print("Your new health is 0")
+                        print()
+                    else:
+                        print("Your new health is:", player.hp)
+                        print()
+            else:
+                print("The attack missed!")
+                print()
+            input("Press enter to continue!")
+            print()
 
 
 
     if player.hp>0:
         print("You have emerged from the combat victorious...")
+        victoryFlag = True
     else:
         print("You have been slain... Game Over.")
         exit()
+    return victoryFlag
 
 
 
@@ -166,7 +231,8 @@ def main():
             room.monster.describe_monster()
             print()
             if fightCheck(player)==True:
-                combat(player,room.monster)
+                if combat(player,room.monster)==True:
+                    room.monster = None
             elif player.hp>0:
                 print("You have evaded the monster for now, but in the process have suffered an injury. You now have", player.hp, "health.")
                 print("If you do not flee immediately, you will encounter it again.")

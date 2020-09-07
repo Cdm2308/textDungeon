@@ -44,7 +44,7 @@
         "ne": "0",
         "e": "4",
         "se": "0",
-        "s": "0",
+        "s": "6",
         "sw": "0",
         "w": "0",
         "nw": "0"
@@ -62,7 +62,7 @@
         "ne": "0",
         "e": "0",
         "se": "0",
-        "s": "0",
+        "s": "7",
         "sw": "0",
         "w": "3",
         "nw": "0"
@@ -89,6 +89,42 @@
       "monster": "",
       "event": "",
       "eventDescription": ""
+    },
+    {
+      "id": "6",
+      "description": "This is room six.",
+      "moves": {
+        "n": "3",
+        "ne": "0",
+        "e": "7",
+        "se": "0",
+        "s": "0",
+        "sw": "0",
+        "w": "0",
+        "nw": "0"
+      },
+      "items": "",
+      "monster": "",
+      "event": "",
+      "eventDescription": ""
+    },
+    {
+      "id": "7",
+      "description": "This is room seven.",
+      "moves": {
+        "n": "4",
+        "ne": "0",
+        "e": "0",
+        "se": "0",
+        "s": "0",
+        "sw": "0",
+        "w": "6",
+        "nw": "0"
+      },
+      "items": "",
+      "monster": "",
+      "event": "",
+      "eventDescription": ""
     }
   ],
   "monsters": [
@@ -102,9 +138,16 @@
     {
       "name": "The Nameless One",
       "description": "This omniscient entity will never give you up, never let you down, and never run around and desert you. \n In addition, it will never make you cry, never say goodbye, and never tell a lie or hurt you.",
-      "monsterHP": 150,
+      "monsterHP": 130,
       "attack": "Brain Plague",
       "attackDamage": 40
+    },
+    {
+      "name": "The Heart of Darkness",
+      "description": "This antediluvian evil will stop at nothing to purge humanity from the earth. \n It is our father and mother, alpha and omega, creator and destroyer.",
+      "monsterHP": 150,
+      "attack": "Unmake Them All",
+      "attackDamage": 50
     }
   ],
   "items": [
@@ -112,19 +155,19 @@
       "name": "Iron Sword",
       "description": "A sturdy, well balanced sword with light rusting. Average sharpness.",
       "quantity": 1,
-      "attackDamage": 20
+      "attackDamage": 30
     },
     {
       "name": "Steel Sword",
       "description": "A sturdy, well balanced sword in pristine condition. Considerable sharpness.",
       "quantity": 1,
-      "attackDamage": 30
+      "attackDamage": 40
     },
     {
       "name": "Coins",
       "description": "A weighty bag of shiny, golden coins. Just looking at it makes you happy.",
       "quantity": 20,
-      "attackDamage": 15
+      "attackDamage": 20
     },
     {
       "name": "Fire Wand",

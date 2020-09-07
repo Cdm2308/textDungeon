@@ -24,7 +24,7 @@ class Player:
 
         for playerItem in self.inventory:
             if playerItem.name.lower() == item:
-                self.weapon = item
+                self.weapon = playerItem
                 print("You have equipped your", item)
 
 
@@ -48,5 +48,5 @@ class Player:
     def print_status(self):
         print()
         print("Your current health is: ", self.hp)
-        print("You are currently wielding your", self.weapon)
+        print("You are currently wielding your", self.weapon.name, "with attack of", self.weapon.attackDamage)
         print()
