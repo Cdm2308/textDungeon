@@ -1,13 +1,28 @@
 import json
 import random
+import os
 from classData.room import Room
 from classData.player import Player
 from classData.monster import Monster
 from classData.item import Item
+# from this article - https://stackoverflow.com/questions/22885780/python-clear-the-screen
+from platform import system as system_name  # Returns the system/OS name
+from subprocess import call as system_call  # Execute a shell command
 
 roomsList = []
 monstersList = []
 itemsList = []
+
+def clear_screen():
+    """
+    Clears the terminal screen.
+    """
+
+    # Clear screen command as function of OS
+    command = 'cls' if system_name().lower() == 'windows' else 'clear'
+
+    # Action
+    system_call([command])
 
 # Game initialization
 def game_init():
@@ -18,18 +33,35 @@ def game_init():
 
     # First places items in any room
     for item in itemsList:
-        randomRoom = random.randint(0, roomCount-1)
-        currentRoom = roomsList[randomRoom]
-        currentRoom.place_item(item)
-        roomsList[randomRoom] = currentRoom
+        itemPlaced = False
+        while itemPlaced != True:
+            randomRoom = random.randint(0, roomCount-1)
+            currentRoom = roomsList[randomRoom]
+            if currentRoom.event == "":
+               currentRoom.place_item(item)
+               roomsList[randomRoom] = currentRoom
+               itemPlaced = True
 
     # Now places monsters in any room except the start
     for monster in monstersList:
-        randomRoom = random.randint(1, roomCount-1)
-        currentRoom = roomsList[randomRoom]
-        if currentRoom.monster is None:
-            currentRoom.place_monster(monster)
-            roomsList[randomRoom] = currentRoom
+        monsterPlaced = False
+        while monsterPlaced != True:
+            randomRoom = random.randint(1, roomCount-1)
+            currentRoom = roomsList[randomRoom]
+            if currentRoom.event == "":
+                if currentRoom.monster is None:
+                 currentRoom.place_monster(monster)
+                 roomsList[randomRoom] = currentRoom
+                 monsterPlaced = True
+
+def debugRooms():
+    for room in roomsList:
+        print()
+        print("*******************************************")
+        print()
+        room.describe_room()
+        if room.monster != None:
+            print("There is a monster here.")
 
 def fightCheck(player):
     fight = False
@@ -43,6 +75,7 @@ def fightCheck(player):
         elif fightChoice == "n":
             savingRoll = random.randint(1,10)
             if savingRoll <7:
+                print("You couldn't flee!")
                 fight = True
             else:
                 newPlayerHP = (player.hp) - (player.hp * 0.1)
@@ -160,7 +193,7 @@ def printIntro():
 # Print command options
 def printHelp():
     print()
-    print("You can enter a direction to move, like : n, ne, e, se, s, sw, w, nw")
+    print("You can enter a direction to move, like : n, ne, e, se, s, sw, w, nw, up or down")
     print("-- or --")
     print("You can enter a command such as 'get sword', 'inventory' or 'status'")
     print()
@@ -169,9 +202,7 @@ def printHelp():
 
 # Print exit game message
 def exitGameMessage():
-    print("Ok, bye - have a nice day...")
-    print()
-    print("Hope ya had fun, you filthy animal!")
+    print("All things must come to an end, and the game is no exception...")
 
 
 # Main Function
@@ -183,7 +214,8 @@ def main():
     currentRoom = "1"
     currentRoomIndex = int(currentRoom) - 1
     continueGame = ""
-    validMoves = ["n", "ne", "e", "se", "s", "sw", "w", "nw"]
+    validMoves = ["n", "ne", "e", "se", "s", "sw", "w", "nw", "up", "down"]
+    clearScreen = False
 
     # Open our game json
     with open('./gameData/cube2.json') as data_file:
@@ -218,7 +250,13 @@ def main():
     # Game loop
     while continueGame != "exit":
 
+        if clearScreen:
+            clear_screen()
+
         room = roomsList[currentRoomIndex]
+        if room.event == "badWin" or room.event == "goodWin":
+            print(room.eventDescription)
+            break
         print("************************")
         print()
         room.describe_room()
@@ -248,7 +286,7 @@ def main():
             nextRoomNumber = room.get_next_room(commandChoice)
             if nextRoomNumber != "0":
                 currentRoomIndex = int(nextRoomNumber) - 1
-                print()
+                clear_screen()
             else:
                 room.badMoveMessage()
         elif len(commandList) > 1:
@@ -280,7 +318,8 @@ def main():
 
         elif commandChoice.lower() == "status":
             player.print_status()
-
+        elif commandChoice.lower() == "debugrooms":
+            debugRooms()
         elif commandChoice.lower() == "exit":
             break
 

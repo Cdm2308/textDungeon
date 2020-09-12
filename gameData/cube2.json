@@ -11,7 +11,9 @@
         "s": "3",
         "sw": "0",
         "w": "0",
-        "nw": "0"
+        "nw": "0",
+        "up": "0",
+        "down": "0"
       },
       "items": "",
       "monster": "",
@@ -29,7 +31,9 @@
         "s": "4",
         "sw": "0",
         "w": "1",
-        "nw": "0"
+        "nw": "0",
+        "up": "0",
+        "down": "0"
       },
       "items": "",
       "monster": "",
@@ -43,11 +47,13 @@
         "n": "1",
         "ne": "0",
         "e": "4",
-        "se": "0",
+        "se": "8",
         "s": "6",
         "sw": "0",
         "w": "0",
-        "nw": "0"
+        "nw": "0",
+        "up": "0",
+        "down": "0"
       },
       "items": "",
       "monster": "",
@@ -63,9 +69,11 @@
         "e": "0",
         "se": "0",
         "s": "7",
-        "sw": "0",
+        "sw": "8",
         "w": "3",
-        "nw": "0"
+        "nw": "0",
+        "up": "0",
+        "down": "0"
       },
       "items": "",
       "monster": "",
@@ -74,7 +82,7 @@
     },
     {
       "id": "5",
-      "description": "This is room five.",
+      "description": "This is room five. There is a seemingly endless ladder into the resplendent space above.",
       "moves": {
         "n": "0",
         "ne": "0",
@@ -83,7 +91,9 @@
         "s": "0",
         "sw": "2",
         "w": "0",
-        "nw": "0"
+        "nw": "0",
+        "up": "10",
+        "down": "0"
       },
       "items": "",
       "monster": "",
@@ -95,13 +105,15 @@
       "description": "This is room six.",
       "moves": {
         "n": "3",
-        "ne": "0",
+        "ne": "8",
         "e": "7",
         "se": "0",
         "s": "0",
         "sw": "0",
         "w": "0",
-        "nw": "0"
+        "nw": "0",
+        "up": "0",
+        "down": "0"
       },
       "items": "",
       "monster": "",
@@ -119,12 +131,114 @@
         "s": "0",
         "sw": "0",
         "w": "6",
-        "nw": "0"
+        "nw": "8",
+        "up": "0",
+        "down": "0"
       },
       "items": "",
       "monster": "",
       "event": "",
       "eventDescription": ""
+    },
+    {
+      "id": "8",
+      "description": "This is room eight. There is a seemingly endless ladder into the tenebrous abyss below.",
+      "moves": {
+        "n": "0",
+        "ne": "4",
+        "e": "0",
+        "se": "7",
+        "s": "0",
+        "sw": "6",
+        "w": "0",
+        "nw": "3",
+        "up": "0",
+        "down": "9"
+      },
+      "items": "",
+      "monster": "",
+      "event": "",
+      "eventDescription": ""
+    },
+    {
+      "id": "9",
+      "description": "This is room nine. An abyssal throbbing fills the air. There is a dark gate to the south.",
+      "moves": {
+        "n": "0",
+        "ne": "0",
+        "e": "0",
+        "se": "0",
+        "s": "11",
+        "sw": "0",
+        "w": "0",
+        "nw": "0",
+        "up": "8",
+        "down": "0"
+      },
+      "items": "",
+      "monster": "",
+      "event": "",
+      "eventDescription": ""
+    },
+    {
+      "id": "10",
+      "description": "This is room ten. A divine glow fills the room. There is a gate made of light to the north.",
+      "moves": {
+        "n": "12",
+        "ne": "0",
+        "e": "0",
+        "se": "0",
+        "s": "0",
+        "sw": "0",
+        "w": "0",
+        "nw": "0",
+        "up": "0",
+        "down": "5"
+      },
+      "items": "",
+      "monster": "",
+      "event": "",
+      "eventDescription": ""
+    },
+    {
+      "id": "11",
+      "description": "This is room eleven. You have entered the dark gate...",
+      "moves": {
+        "n": "9",
+        "ne": "0",
+        "e": "0",
+        "se": "0",
+        "s": "0",
+        "sw": "0",
+        "w": "0",
+        "nw": "0",
+        "up": "0",
+        "down": "0"
+      },
+      "items": "",
+      "monster": "",
+      "event": "badWin",
+      "eventDescription": "You have entered the very depths of this darkest hole. Inside, you see a horrific sight, so maddening that you can neither look nor look away. \n The Heart of Darkness slumbers here! By entering this area, you have broken the seal and awoken it! \n In so doing, it shatters the world with it's colossal size... \n ENDING 1: Hastened the End "
+    },
+    {
+      "id": "12",
+      "description": "This is room twelve. You have entered the light gate...",
+      "moves": {
+        "n": "0",
+        "ne": "0",
+        "e": "0",
+        "se": "0",
+        "s": "10",
+        "sw": "0",
+        "w": "0",
+        "nw": "0",
+        "up": "0",
+        "down": "0"
+      },
+      "items": "",
+      "monster": "",
+      "event": "goodWin",
+      "eventDescription": "You have finally emerged from the pitiless stone catacombs of the dungeon. Clambering to the surface, you pause to catch your breath. \n You have escaped, and now you seal off the dungeon so that no other poor soul may become entrapped within... \n ENDING 2: Escape"
     }
   ],
   "monsters": [
@@ -148,6 +262,13 @@
       "monsterHP": 150,
       "attack": "Unmake Them All",
       "attackDamage": 50
+    },
+    {
+      "name": "Absolute Nothingness",
+      "description": "A cosmic void, incomprehensible to mankind. \n It approaches you menacingly...",
+      "monsterHP": 120,
+      "attack": "Know This",
+      "attackDamage": 30
     }
   ],
   "items": [
@@ -171,8 +292,34 @@
     },
     {
       "name": "Fire Wand",
-      "description": "A strange rod made of iron with a ruby at the tip. It radiates warmth and possesses the power of immolation.",
+      "description": "A strange rod made of copper with a ruby at the tip. It radiates warmth and possesses the power of immolation.",
       "material": "iron",
+      "quantity": 1,
+      "attackDamage": 50
+    },
+    {
+      "name": "Ice Wand",
+      "description": "A strange rod made of silver with a sapphire at the tip. It radiates cold and reminds you strongly of home.",
+      "material": "iron",
+      "quantity": 1,
+      "attackDamage": 40
+    },
+    {
+      "name": "Lightning Wand",
+      "description": "A strange rod made of gold with a topaz at the tip. It makes your hand tingle when you hold it.",
+      "material": "iron",
+      "quantity": 1,
+      "attackDamage": 60
+    },
+    {
+      "name": "Void Wand",
+      "description": "A strange rod made of stygian iron with an onyx at the tip. It banishes foes to another plane.",
+      "quantity": 1,
+      "attackDamage": 70
+    },
+    {
+      "name": "Sun Sword",
+      "description": "A divine weapon used in the kingdom of Astora. Inflicts severe damage when used in combat.",
       "quantity": 1,
       "attackDamage": 50
     }

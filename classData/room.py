@@ -13,6 +13,8 @@ class Room:
         self.movesDict = room.get("moves")
         self.itemsList = []
         self.monster = None
+        self.event = room.get("event")
+        self.eventDescription = room.get("eventDescription")
 
 
     # Describe room
