@@ -2,7 +2,7 @@
   "rooms": [
     {
       "id": "1",
-      "description": "This is room one. It's the first best room.",
+      "description": "This is room one. It's the first best room. You see doors to your east and south.",
       "moves": {
         "n": "0",
         "ne": "0",
@@ -22,7 +22,7 @@
     },
     {
       "id": "2",
-      "description": "This is room two. This is the second best room.",
+      "description": "This is room two. This is the second best room. You see doors to your northeast, south and west.",
       "moves": {
         "n": "0",
         "ne": "5",
@@ -42,7 +42,7 @@
     },
     {
       "id": "3",
-      "description": "This is room three.",
+      "description": "This is room three. You see doors to your north, east, southeast, and south.",
       "moves": {
         "n": "1",
         "ne": "0",
@@ -62,7 +62,7 @@
     },
     {
       "id": "4",
-      "description": "This is room four.",
+      "description": "This is room four. You see doors to your north, south, southwest, and west.",
       "moves": {
         "n": "2",
         "ne": "0",
@@ -82,7 +82,7 @@
     },
     {
       "id": "5",
-      "description": "This is room five. There is a seemingly endless ladder into the resplendent space above.",
+      "description": "This is room five. There is a seemingly endless ladder into the resplendent space above. You also see a door to your southwest.",
       "moves": {
         "n": "0",
         "ne": "0",
@@ -102,7 +102,7 @@
     },
     {
       "id": "6",
-      "description": "This is room six.",
+      "description": "This is room six. You see doors to your north, northeast, and east.",
       "moves": {
         "n": "3",
         "ne": "8",
@@ -122,7 +122,7 @@
     },
     {
       "id": "7",
-      "description": "This is room seven.",
+      "description": "This is room seven. You see doors to your north, west, and northwest.",
       "moves": {
         "n": "4",
         "ne": "0",
@@ -142,7 +142,7 @@
     },
     {
       "id": "8",
-      "description": "This is room eight. There is a seemingly endless ladder into the tenebrous abyss below.",
+      "description": "This is room eight. There is a seemingly endless ladder into the tenebrous abyss below. You also see doors to the northeast, southeast, southwest and northwest.",
       "moves": {
         "n": "0",
         "ne": "4",
@@ -162,7 +162,7 @@
     },
     {
       "id": "9",
-      "description": "This is room nine. An abyssal throbbing fills the air. There is a dark gate to the south.",
+      "description": "This is room nine. An abyssal throbbing fills the air. There is a dark gate to the south, as well as the ladder from whence you came.",
       "moves": {
         "n": "0",
         "ne": "0",
@@ -182,7 +182,7 @@
     },
     {
       "id": "10",
-      "description": "This is room ten. A divine glow fills the room. There is a gate made of light to the north.",
+      "description": "This is room ten. A divine glow fills the room. There is a gate made of light to the north. There is also the ladder from whence you came.",
       "moves": {
         "n": "12",
         "ne": "0",

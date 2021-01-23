@@ -8,7 +8,7 @@ class Player:
     # Constructor
     def __init__(self):
         self.inventory = []
-        self.hp = 100
+        self.hp = 125
         self.weapon = None
 
     # Add an item to the players inventory

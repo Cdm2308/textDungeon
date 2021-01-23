@@ -115,7 +115,7 @@ def combat(player, monster):
             playerAttackPoints = player.weapon.attackDamage
             print("You attack the monster with your", player.weapon.name, "!")
             print()
-        if playerAttackChance > 4:
+        if playerAttackChance > 3:
             print("The attack was a success!")
             print()
             if playerAttackChance == 10:
@@ -146,7 +146,7 @@ def combat(player, monster):
         if monster.HP > 0:
             print("The monster uses", monster.attack, "!")
             print()
-            if monsterAttackChance > 4:
+            if monsterAttackChance > 3:
                 print("The monster's attack was a success!")
                 print()
                 if monsterAttackChance == 10:
@@ -173,8 +173,6 @@ def combat(player, monster):
             input("Press enter to continue!")
             print()
 
-
-
     if player.hp>0:
         print("You have emerged from the combat victorious...")
         victoryFlag = True
@@ -182,7 +180,6 @@ def combat(player, monster):
         print("You have been slain... Game Over.")
         exit()
     return victoryFlag
-
 
 
 # Print a kick butt intro, lol
@@ -197,7 +194,6 @@ def printHelp():
     print("-- or --")
     print("You can enter a command such as 'get sword', 'inventory' or 'status'")
     print()
-
 
 
 # Print exit game message
