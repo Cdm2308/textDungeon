@@ -5,6 +5,7 @@ from classData.room import Room
 from classData.player import Player
 from classData.monster import Monster
 from classData.item import Item
+from classData import asciiArt
 # from this article - https://stackoverflow.com/questions/22885780/python-clear-the-screen
 from platform import system as system_name  # Returns the system/OS name
 from subprocess import call as system_call  # Execute a shell command
@@ -141,7 +142,7 @@ def combat(player, monster):
             print()
 
         input("Press enter to continue!")
-        print()
+        clear_screen()
 
         if monster.HP > 0:
             print("The monster uses", monster.attack, "!")
@@ -171,12 +172,14 @@ def combat(player, monster):
                 print("The attack missed!")
                 print()
             input("Press enter to continue!")
-            print()
+            clear_screen()
 
     if player.hp>0:
         print("You have emerged from the combat victorious...")
         victoryFlag = True
     else:
+        asciiArt.display_death()
+        print()
         print("You have been slain... Game Over.")
         exit()
     return victoryFlag
@@ -184,8 +187,10 @@ def combat(player, monster):
 
 # Print a kick butt intro, lol
 def printIntro():
-    print("Welcome to the mini dungeon, type exit to quit...")
-
+    # print("Welcome to the mini dungeon, type exit to quit...")
+    clear_screen()
+    asciiArt.display_intro()
+    clear_screen()
 
 # Print command options
 def printHelp():
