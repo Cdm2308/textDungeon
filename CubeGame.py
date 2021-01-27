@@ -66,7 +66,7 @@ def debugRooms():
 
 def fightCheck(player):
     fight = False
-    fightChoice = input("Will you purge this abomination? (y or n)").lower()
+    fightChoice = input("Will you purge this abomination, or attempt to flee? (y or n)").lower()
 
     while (fightChoice != "y") or (fightChoice != "n"):
 
@@ -76,8 +76,10 @@ def fightCheck(player):
         elif fightChoice == "n":
             savingRoll = random.randint(1,10)
             if savingRoll <7:
-                print("You couldn't flee!")
+                print("You couldn't escape!")
+                input("Prepare for combat and hit enter...")
                 fight = True
+                break
             else:
                 newPlayerHP = (player.hp) - (player.hp * 0.1)
                 player.hp = int(newPlayerHP)
@@ -90,7 +92,7 @@ def fightCheck(player):
 
 def combat(player, monster):
     victoryFlag = False
-    print()
+    clear_screen()
     print("What is a player? A miserable little pile of hit points! But enough talk, have at you!")
     while player.hp>0 and monster.HP>0:
         print()
@@ -102,7 +104,7 @@ def combat(player, monster):
         print()
 
         input("Press enter to continue!")
-        print()
+        clear_screen()
 
         playerAttackPoints = 10
         playerAttackChance = random.randint(1,10)
@@ -175,7 +177,8 @@ def combat(player, monster):
             clear_screen()
 
     if player.hp>0:
-        print("You have emerged from the combat victorious...")
+        input("You have emerged from the combat victorious... Press enter to advance.")
+        clear_screen()
         victoryFlag = True
     else:
         asciiArt.display_death()
@@ -198,7 +201,8 @@ def printHelp():
     print("You can enter a direction to move, like : n, ne, e, se, s, sw, w, nw, up or down")
     print("-- or --")
     print("You can enter a command such as 'get sword', 'inventory' or 'status'")
-    print()
+    input("Press enter to close this dialogue and resume play.")
+    clear_screen()
 
 
 # Print exit game message
@@ -247,6 +251,7 @@ def main():
         itemsList.append(currentItem)
 
     game_init()
+    describeRoomAgain = False
 
     # Game loop
     while continueGame != "exit":
@@ -265,6 +270,7 @@ def main():
             print("There are no monsters here. A brief respite may be had.")
             print()
         else:
+            clear_screen()
             print("There is a monster in the room!")
             print()
             room.monster.describe_monster()
@@ -272,11 +278,13 @@ def main():
             if fightCheck(player)==True:
                 if combat(player,room.monster)==True:
                     room.monster = None
+                    room.describe_room()
             elif player.hp>0:
+                clear_screen()
                 print("You have evaded the monster for now, but in the process have suffered an injury. You now have", player.hp, "health.")
                 print("If you do not flee immediately, you will encounter it again.")
                 print()
-        print()
+                room.describe_room()
         print("************************")
         print()
 
@@ -289,6 +297,7 @@ def main():
                 currentRoomIndex = int(nextRoomNumber) - 1
                 clear_screen()
             else:
+                clear_screen()
                 room.badMoveMessage()
         elif len(commandList) > 1:
             commandVerb = commandList[0]
@@ -301,23 +310,27 @@ def main():
             if len(commandList) == 3:
                 targetItem = commandList[1] + " " + commandList[2]
 
-            if commandVerb == "get":
+            if commandVerb == "get" or commandVerb == "take":
                 newItem = room.get_item(targetItem)
                 if newItem is not None:
+                    clear_screen()
                     player.add_item(newItem)
-                    player.print_inventory()
                 else:
+                    clear_screen()
                     print(targetItem, "is not in the room.")
             elif commandVerb == "equip":
+                clear_screen()
                 player.equip_weapon(targetItem)
 
         elif commandChoice.lower() == "h":
             printHelp()
 
         elif commandChoice.lower() == "i":
+            clear_screen()
             player.print_inventory()
 
         elif commandChoice.lower() == "status":
+            clear_screen()
             player.print_status()
         elif commandChoice.lower() == "debugrooms":
             debugRooms()
@@ -325,6 +338,7 @@ def main():
             break
 
         else:
+            clear_screen()
             print("Sorry, I don't understand -->", commandChoice)
 
     exitGameMessage()
