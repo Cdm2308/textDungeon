@@ -180,7 +180,10 @@ def combat(player, monster):
             clear_screen()
 
     if player.hp>0:
-        playsound("sounds/monsterDeath.mp3")
+        try:
+            playsound("./sounds/monsterDeath.mp3")
+        except:
+            print("Sound not available.")
         input("You have emerged from the combat victorious... Press enter to advance.")
         clear_screen()
         victoryFlag = True

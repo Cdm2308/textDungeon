@@ -24,7 +24,10 @@ def display_intro():
     print("|#############################################################|")
     print("                                                               ")
     print("                                                               ")
-    playsound("./sounds/monsterDeath.mp3")
+    try:
+        playsound("./sounds/monsterDeath.mp3")
+    except:
+        print("Sound not available.")
     input("Press enter to begin...                                        ")
 
 def display_death():
