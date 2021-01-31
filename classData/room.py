@@ -22,7 +22,9 @@ class Room:
         print("Description :", self.description)
         print()
         if len(self.itemsList)>0:
+            print()
             print("You see the following items:")
+            print()
             for item in self.itemsList:
                 print(item.name)
 

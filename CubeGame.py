@@ -1,6 +1,7 @@
 import json
 import random
 import os
+from playsound import playsound
 from classData.room import Room
 from classData.player import Player
 from classData.monster import Monster
@@ -67,6 +68,7 @@ def debugRooms():
 def fightCheck(player):
     fight = False
     fightChoice = input("Will you purge this abomination, or attempt to flee? (y or n)").lower()
+    print()
 
     while (fightChoice != "y") or (fightChoice != "n"):
 
@@ -76,7 +78,8 @@ def fightCheck(player):
         elif fightChoice == "n":
             savingRoll = random.randint(1,10)
             if savingRoll <7:
-                print("You couldn't escape!")
+                print()
+                print("You couldn't escape!\n")
                 input("Prepare for combat and hit enter...")
                 fight = True
                 break
@@ -177,6 +180,7 @@ def combat(player, monster):
             clear_screen()
 
     if player.hp>0:
+        playsound("sounds/monsterDeath.mp3")
         input("You have emerged from the combat victorious... Press enter to advance.")
         clear_screen()
         victoryFlag = True
@@ -207,7 +211,8 @@ def printHelp():
 
 # Print exit game message
 def exitGameMessage():
-    print("All things must come to an end, and the game is no exception...")
+    clear_screen()
+    asciiArt.display_exit()
 
 
 # Main Function
@@ -261,12 +266,15 @@ def main():
 
         room = roomsList[currentRoomIndex]
         if room.event == "badWin" or room.event == "goodWin":
-            print(room.eventDescription)
+            print()
+            input(room.eventDescription)
+            print("\nPress enter to continue.\n")
             break
         print("************************")
         print()
         room.describe_room()
         if room.monster == None:
+            print()
             print("There are no monsters here. A brief respite may be had.")
             print()
         else:

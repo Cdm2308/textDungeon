@@ -218,7 +218,7 @@
       "items": "",
       "monster": "",
       "event": "badWin",
-      "eventDescription": "You have entered the very depths of this darkest hole. Inside, you see a horrific sight, so maddening that you can neither look nor look away. \n The Heart of Darkness slumbers here! By entering this area, you have broken the seal and awoken it! \n In so doing, it shatters the world with it's colossal size... \n ENDING 1: Hastened the End "
+      "eventDescription": "You have entered the very depths of this darkest hole. Inside, you see a horrific sight, so maddening that you can neither look nor look away. \n \n The Heart of Darkness slumbers here! By entering this area, you have broken the seal and awoken it! \n \n In so doing, it shatters the world with it's colossal size... \n \n ENDING 1: Hastened the End "
     },
     {
       "id": "12",
@@ -238,7 +238,7 @@
       "items": "",
       "monster": "",
       "event": "goodWin",
-      "eventDescription": "You have finally emerged from the pitiless stone catacombs of the dungeon. Clambering to the surface, you pause to catch your breath. \n You have escaped, and now you seal off the dungeon so that no other poor soul may become entrapped within... \n ENDING 2: Escape"
+      "eventDescription": "You have finally emerged from the pitiless stone catacombs of the dungeon. Clambering to the surface, you pause to catch your breath. \n \n You have escaped, and now you seal off the dungeon so that no other poor soul may become entrapped within... \n \n ENDING 2: Escape"
     }
   ],
   "monsters": [

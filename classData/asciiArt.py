@@ -1,5 +1,7 @@
 # Ascii art came from http://www.asciiworld.com/-Death-Co-.html
 
+from playsound import playsound
+
 def display_intro():
     print("|#############################################################|")
     print("|*************************************************************|")
@@ -22,6 +24,7 @@ def display_intro():
     print("|#############################################################|")
     print("                                                               ")
     print("                                                               ")
+    playsound("./sounds/monsterDeath.mp3")
     input("Press enter to begin...                                        ")
 
 def display_death():
@@ -62,3 +65,31 @@ def display_death():
     print("|                                                             |")
     print("|*************************************************************|")
     print("|#############################################################|")
+
+def display_exit():
+    print("|#############################################################|")
+    print("|*************************************************************|")
+    print("|                                                             |")
+    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,")
+    print("8                           8\"b,    \"Ya")
+    print("8                           8  \"b,    \"Ya")
+    print("8                    aaaaaaa8,   \"b,    \"Ya")
+    print("8                    8\"b,    \"Ya   \"8\"\"\"\"\"\"8")
+    print("8                    8  \"b,    \"Ya  8      8")
+    print("8             aaaaaaa8,   \"b,    \"Ya8      8")
+    print("8             8\"b,    \"Ya   \"8\"\"\"\"\"\"\"      8")
+    print("8             8  \"b,    \"Ya  8             8")
+    print("8      aaaaaa88,   \"b,    \"Ya8             8")
+    print("8      8\"b,    \"Ya   \"8\"\"\"\"\"\"\"             8")
+    print("8      8  \"b,    \"Ya  8                    8")
+    print("8aaaaaa8,   \"b,    \"Ya8                    8")
+    print("8\"b,    \"Ya   \"8\"\"\"\"\"\"\"                    8")
+    print("8  \"b,    \"Ya  8                           8")
+    print("8,   \"b,    \"Ya8                           8")
+    print(" \"Ya   \"8\"\"\"\"\"\"\"                           8")
+    print("   \"Ya  8                                  8")
+    print("     \"Ya8                                  8")
+    print("       \"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"")
+    print("|                                                             |")
+    print("|*************************************************************|")
+    print("|#############################################################|\n\nAll things must come to an end, and this game is no exception...")

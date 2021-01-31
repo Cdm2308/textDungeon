@@ -13,6 +13,7 @@ class Player:
 
     # Add an item to the players inventory
     def add_item(self, item):
+        print()
         self.inventory.append(item)
 
     # Remove an item from the players inventory
@@ -25,13 +26,15 @@ class Player:
         for playerItem in self.inventory:
             if playerItem.name.lower() == item:
                 self.weapon = playerItem
-                print("You have equipped your", item)
+                print()
+                print("You have equipped your", item, "\n")
 
 
     # Print players inventory
     def print_inventory(self):
         if len(self.inventory) > 0:
-            print("Your inventory is filled with:")
+            print()
+            print("Your inventory is filled with:\n")
 
             # self.inventory is list of dictionaries
             for item in self.inventory:

@@ -16,5 +16,6 @@ class Monster:
     # Describe Monster
     def describe_monster(self):
         print("Name :", self.name)
+        print()
         print("Description :", self.description)
         print()
